@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<h2>The XMLHttpRequest Object</h2>
+<button type="button" onclick="loadDoc()">Request data</button>
+<p id="demo"></p>
+
+<script>
+function loadDoc() {
+  /* Data which will be sent to server */
+let postObj = { 
+    id: 1, 
+    title: "What is AJAX", 
+    body: "AJAX stands for Asynchronous JavaScript..."
+}
+  let post = JSON.stringify(postObj)
+ 
+const url = "demo.txt"
+let xhr = new XMLHttpRequest()
+ 
+xhr.open('POST', url, true)
+xhr.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+xhr.send(post);
+ 
+xhr.onload = function () {
+    if(xhr.status === 201) {
+        console.log("Post successfully created!") 
+    }
+}
+}
+</script>
+
+</body>
+</html>
